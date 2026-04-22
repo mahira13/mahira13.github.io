@@ -1,132 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Mahira Ahmad | Flutter Developer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <style>
     body {
-      font-family: 'Poppins', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: #f9fafc;
-      color: #222;
+      background: #0f172a;
+      color: #e2e8f0;
     }
+
     header {
       text-align: center;
-      padding: 80px 20px 40px;
-      background: linear-gradient(120deg, #0078d7, #00c6ff);
-      color: white;
+      padding: 60px 20px;
     }
+
     h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
+      margin: 0;
+      font-size: 2.5rem;
     }
-    h2 {
-      color: #0078d7;
-    }
+
     p {
-      line-height: 1.7;
-      font-size: 16px;
+      color: #94a3b8;
     }
-    .container {
+
+    section {
       max-width: 900px;
       margin: auto;
+      padding: 40px 20px;
+    }
+
+    h2 {
+      border-bottom: 1px solid #334155;
+      padding-bottom: 10px;
+    }
+
+    .card {
+      background: #1e293b;
       padding: 20px;
-    }
-    .projects {
-      margin-top: 40px;
-    }
-    .project {
-      background: white;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-      padding: 20px;
-      margin-bottom: 20px;
+      margin-top: 15px;
     }
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      color: #666;
-    }
+
     a {
-      color: #0078d7;
+      color: #38bdf8;
       text-decoration: none;
     }
-    a:hover {
-      text-decoration: underline;
+
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 15px;
+      background: #38bdf8;
+      color: black;
+      border-radius: 6px;
+      font-weight: bold;
     }
+
   </style>
 </head>
+
 <body>
 
-  <header>
-    <h1>Mahira Ahmad</h1>
-    <h3>Flutter Developer | Mobile Engineer</h3>
-    <p>Building scalable, user-focused, and impactful Flutter apps for global users.</p>
-  </header>
+<header>
+  <h1>Mahira Ahmad</h1>
+  <p>Flutter Developer | Building Scalable Mobile Apps</p>
+  <p>Berlin, Germany</p>
+</header>
 
-  
 <section>
-        <h2>About Me</h2>
-        <p>I build production-grade Flutter apps with a focus on performance, clean architecture, and delightful UX. I enjoy owning features end-to-end — from Figma to release — and I’m comfortable collaborating across design, product, and backend to ship fast without sacrificing quality.</p>
-    </section>
+  <h2>About</h2>
+  <p>
+    I’m a Flutter developer with 4+ years of experience building production mobile applications.
+    I focus on scalable architecture, real-time systems, and delivering high-quality apps end-to-end.
+  </p>
+</section>
 
-    <section>
-        <h2>Projects</h2>
+<section>
+  <h2>Skills</h2>
+  <div class="card">
+    Flutter, Dart, Firebase, REST APIs, GraphQL, AWS  
+    BLoC, GetX, Riverpod  
+    CI/CD (GitHub Actions), App Store & Play Store Deployment
+  </div>
+</section>
 
-        <div class="project">
-            <h3>Bael Health Reminder</h3>
-            <div class="badges">
-                <span class="badge">Flutter</span>
-                <span class="badge">Firebase</span>
-                <span class="badge">REST API</span>
-            </div>
-            <p>Medicine management app with scheduling, reminders, and tracking.</p>
-            <p><strong>Links:</strong> <a href="https://play.google.com/store/apps/details?id=com.app.BaelHealthReminder" target="_blank" rel="noopener">Google Play</a></p>
-            <div class="highlight">Sole developer; delivered to production with background scheduling and analytics.</div>
-        </div>
+<section>
+  <h2>Experience Highlights</h2>
 
-        <div class="project">
-            <h3>The Bench – Dating Manager</h3>
-            <div class="badges">
-                <span class="badge">Flutter</span>
-                <span class="badge">GetX</span>
-                <span class="badge">AWS Amplify</span>
-                <span class="badge">GraphQL</span>
-            </div>
-            <p>Social platform for close friends to share and follow each other’s dating updates.</p>
-            <p><strong>Links:</strong> <a href="https://apps.apple.com/in/app/the-bench-dating-manager/id6444719595" target="_blank" rel="noopener">App Store</a></p>
-            <div class="highlight">Built from scratch; implemented like/share/comment on posts, push notifications, inviting users to inner friends group using dynamic links, user authentication using AWS Cognito, and real-time chat using GraphQL subscriptions.</div>
-        </div>
+  <div class="card">
+    <strong>End-to-End App Development</strong>
+    <p>Built and launched multiple apps from scratch to production.</p>
+  </div>
 
-        <div class="project">
-            <h3>Phox Tracker</h3>
-            <div class="badges">
-                <span class="badge">Flutter</span>
-                <span class="badge">Firebase</span>
-                <span class="badge">REST API</span>
-            </div>
-            <p>Prescription delivery & logistics tracking with notifications.</p>
-            <p><strong>Links:</strong> <a href="https://apps.apple.com/in/app/phox-tracker/id1597703906" target="_blank" rel="noopener">App Store</a></p>
-            <div class="highlight">Collaborated with team; migrated to Flutter 3 and improved low-network reliability.</div>
-        </div>
-    </section>
+  <div class="card">
+    <strong>Real-time & Scalable Systems</strong>
+    <p>Implemented chat, notifications, GraphQL subscriptions, and cloud integrations.</p>
+  </div>
 
-    <section>
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:mahiraamu@gmail.com">mahiraamu@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/mahira-ahmad-869953133" target="_blank" rel="noopener">linkedin.com/in/mahira-ahmad-869953133</a></p>
-        <p>GitHub: <a href="https://github.com/mahira13" target="_blank" rel="noopener">github.com/mahira13</a></p>
-    </section>
-</body>
-</html>
+  <div class="card">
+    <strong>Architecture & Mentoring</strong>
+    <p>Improved codebases, reviewed code, and guided developers in scalable practices.</p>
+  </div>
 
-  <footer>
-    © 2025 Mahira Ahmad | Built with Flutter ❤️
-  </footer>
+</section>
+
+<section>
+  <h2>Projects</h2>
+
+  <div class="card">
+    <strong>Bael Health Reminder</strong>
+    <p>Medicine reminder app with background notifications and clean architecture.</p>
+  </div>
+
+  <div class="card">
+    <strong>The Bench (Social App)</strong>
+    <p>Real-time chat, push notifications, GraphQL backend, scalable architecture.</p>
+  </div>
+
+</section>
+
+<section>
+  <h2>Contact</h2>
+  <p>Email: mahiraamu@gmail.com</p>
+  <p>
+    <a href="https://github.com/mahira13">GitHub</a> |
+    <a href="https://linkedin.com/in/mahira-ahmad-869953133">LinkedIn</a>
+  </p>
+
+  <a class="btn" href="CV.pdf" download>Download CV</a>
+</section>
 
 </body>
 </html>
