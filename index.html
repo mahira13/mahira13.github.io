@@ -1,198 +1,500 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mahira Ahmad | Flutter Developer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mahira Ahmad — Flutter Mobile Engineer</title>
+<meta name="description" content="Flutter developer with 4+ years shipping production apps, working at the intersection of Flutter and AI — LLM integration, on-device inference and workflow automation. Based in Berlin.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:            #0a0c10;
+    --surface:       #12151b;
+    --surface-alt:   #171b23;
+    --border:        #262b35;
+    --border-soft:   #1d222b;
+    --text:          #e7e9ed;
+    --text-dim:      #9aa3b2;
+    --text-faint:    #5b6472;
+    --accent:        #37d3ff;
+    --accent-deep:   #2a6df4;
+    --accent-amber:  #ffb454;
+    --accent-rose:   #ff7a90;
+    --radius:        10px;
+    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before{
+    content:"";
+    position: fixed; inset:0;
+    background:
+      radial-gradient(ellipse 900px 500px at 15% -10%, rgba(55,211,255,0.07), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 10%, rgba(255,122,144,0.05), transparent 60%);
+    pointer-events:none;
+    z-index:0;
+  }
+  a{ color: inherit; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width: 1040px; margin:0 auto; padding: 0 28px; position:relative; z-index:1; }
+  section{ position:relative; z-index:1; }
 
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      background-color: #f9fafc;
-      color: #222;
-    }
+  ::selection{ background: rgba(55,211,255,0.25); color:#fff; }
 
-    header {
-      text-align: center;
-      padding: 80px 20px 40px;
-      background: linear-gradient(120deg, #0078d7, #00c6ff);
-      color: white;
-    }
+  a:focus-visible, button:focus-visible, .tab:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
 
-    h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
-    }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  }
 
-    h2 {
-      color: #0078d7;
-      margin-top: 40px;
-    }
+  /* ---------- top nav ---------- */
+  .nav{
+    position: sticky; top:0; z-index:50;
+    background: rgba(10,12,16,0.82);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  .nav-inner{
+    max-width:1040px; margin:0 auto; padding: 16px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{
+    font-family: var(--mono); font-weight:600; font-size:14px; color: var(--text);
+    text-decoration:none; letter-spacing:0.02em;
+  }
+  .brand .dot{ color: var(--accent); }
+  .nav-links{ display:flex; gap:28px; list-style:none; margin:0; padding:0; }
+  .nav-links a{
+    font-family: var(--mono); font-size:13px; color: var(--text-dim);
+    text-decoration:none; transition: color .15s ease;
+  }
+  .nav-links a:hover{ color: var(--accent); }
+  .nav-links .num{ color: var(--text-faint); }
+  @media (max-width: 620px){ .nav-links{ display:none; } }
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-    }
+  /* ---------- hero ---------- */
+  .hero{ padding: 76px 0 40px; }
+  .eyebrow{
+    font-family: var(--mono); font-size:13px; color: var(--accent);
+    display:flex; align-items:center; gap:10px; margin-bottom:22px;
+  }
+  .eyebrow .bar{ width:22px; height:1px; background: var(--accent); opacity:.6; }
 
-    .project {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-      padding: 20px;
-      margin-bottom: 20px;
-    }
+  .editor{
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow:hidden;
+    box-shadow: 0 30px 60px -25px rgba(0,0,0,0.6);
+  }
+  .editor-titlebar{
+    display:flex; align-items:center; gap:8px;
+    padding: 11px 14px;
+    background: var(--surface-alt);
+    border-bottom: 1px solid var(--border);
+  }
+  .editor-dot{ width:10px; height:10px; border-radius:50%; }
+  .editor-dot.r{ background:#ff5f57; } .editor-dot.y{ background:#febc2e; } .editor-dot.g{ background:#28c840; }
+  .editor-filename{
+    margin-left:10px; font-family: var(--mono); font-size:12px; color: var(--text-faint);
+  }
+  .editor-body{ padding: 30px 30px 26px; }
+  .code-line{ font-family: var(--mono); white-space:pre-wrap; font-size: clamp(14px, 2.6vw, 19px); line-height:1.75; }
+  .tok-kw{ color:#ff7a90; }
+  .tok-cls{ color:#ffd580; }
+  .tok-fn{ color:#37d3ff; }
+  .tok-str{ color:#9ece6a; }
+  .tok-com{ color: var(--text-faint); }
+  .tok-pl{ color: var(--text-dim); }
+  .caret{
+    display:inline-block; width:9px; height:1.1em; background:var(--accent);
+    vertical-align: text-bottom; margin-left:2px;
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink{ 50%{ opacity:0; } }
 
-    .badges {
-      margin: 10px 0;
-    }
+  .hero-sub{
+    margin: 26px 2px 0; max-width: 620px;
+    color: var(--text-dim); font-size:16px;
+  }
+  .hero-cta{ display:flex; gap:12px; flex-wrap:wrap; margin: 26px 2px 0; }
+  .btn{
+    font-family: var(--mono); font-size:13px; padding:11px 18px;
+    border-radius:8px; text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+    transition: transform .15s ease, border-color .15s ease, background .15s ease;
+    border:1px solid var(--border);
+  }
+  .btn:hover{ transform: translateY(-1px); }
+  .btn-primary{ background: linear-gradient(135deg, var(--accent-deep), var(--accent)); color:#04111a; border-color: transparent; font-weight:600; }
+  .btn-ghost{ color: var(--text); background: var(--surface); }
+  .btn-ghost:hover{ border-color: var(--accent); color: var(--accent); }
 
-    .badge {
-      display: inline-block;
-      background: #eef4ff;
-      color: #0078d7;
-      padding: 5px 10px;
-      border-radius: 5px;
-      font-size: 12px;
-      margin: 2px;
-    }
+  /* status bar (vscode-esque) */
+  .statusbar{
+    margin-top: 40px;
+    display:flex; flex-wrap:wrap; gap:0;
+    font-family: var(--mono); font-size:12px;
+    background: var(--accent-deep);
+    color:#eaf6ff;
+    border-radius: 6px;
+    overflow:hidden;
+  }
+  .statusbar span{
+    padding: 8px 14px;
+    border-right: 1px solid rgba(255,255,255,0.14);
+    display:flex; align-items:center; gap:6px;
+    opacity:0.95;
+  }
+  .statusbar span:last-child{ border-right:none; margin-left:auto; }
+  @media (max-width:700px){ .statusbar span:not(:first-child):not(:nth-child(2)){ display:none; } .statusbar span:last-child{ display:flex; } }
 
-    .highlight {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #444;
-    }
+  /* ---------- section heads ---------- */
+  .section{ padding: 84px 0; border-top: 1px solid var(--border-soft); }
+  .head{ display:flex; align-items:baseline; gap:14px; margin-bottom: 40px; }
+  .head .idx{ font-family: var(--mono); color: var(--text-faint); font-size:14px; }
+  .head h2{ font-family: var(--mono); font-size: 22px; font-weight:600; margin:0; }
+  .head .rule{ flex:1; height:1px; background: var(--border); }
 
-    a {
-      color: #0078d7;
-      text-decoration: none;
-    }
+  /* ---------- about ---------- */
+  .about-grid{ display:grid; grid-template-columns: 1.3fr 1fr; gap: 56px; align-items:start; }
+  @media (max-width: 780px){ .about-grid{ grid-template-columns:1fr; } }
+  .about-text p{ color: var(--text-dim); margin: 0 0 16px; font-size:15.5px; }
+  .about-text strong{ color: var(--text); font-weight:600; }
+  .stat-list{ display:flex; flex-direction:column; gap:0; border:1px solid var(--border); border-radius: var(--radius); overflow:hidden; }
+  .stat-row{ display:flex; justify-content:space-between; padding:14px 18px; border-bottom:1px solid var(--border-soft); font-family: var(--mono); font-size:13px; }
+  .stat-row:last-child{ border-bottom:none; }
+  .stat-row .k{ color: var(--text-faint); }
+  .stat-row .v{ color: var(--text); text-align:right; }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      color: #666;
-    }
-  </style>
+  /* ---------- projects ---------- */
+  .project{
+    border:1px solid var(--border); border-radius: var(--radius);
+    background: var(--surface);
+    margin-bottom: 22px;
+    overflow:hidden;
+  }
+  .project-tab{
+    display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    padding: 16px 20px; background: var(--surface-alt);
+    border-bottom: 1px solid var(--border);
+  }
+  .project-filename{ font-family: var(--mono); font-size:14px; color: var(--text); font-weight:600; }
+  .project-org{ font-family: var(--mono); font-size:12px; color: var(--text-faint); }
+  .project-tag{
+    font-family: var(--mono); font-size:11px; padding:3px 9px; border-radius:100px;
+    border:1px solid; letter-spacing:0.02em;
+  }
+  .tag-featured{ color: var(--accent); border-color: rgba(55,211,255,0.35); background: rgba(55,211,255,0.08); }
+  .tag-progress{ color: var(--accent-amber); border-color: rgba(255,180,84,0.35); background: rgba(255,180,84,0.08); }
+  .tag-archive{ color: var(--text-faint); border-color: var(--border); }
+  .project-body{ padding: 24px 24px 26px; }
+  .project-desc{ color: var(--text-dim); font-size:14.5px; max-width: 640px; margin: 0 0 16px; }
+  .stack-line{ font-family: var(--mono); font-size:12.5px; color: var(--text-faint); margin-bottom:22px; }
+  .stack-line .pkg{ color: var(--accent); }
+  .project-links{ display:flex; gap:16px; margin-bottom: 22px; flex-wrap:wrap; }
+  .project-links a{ font-family: var(--mono); font-size:12.5px; color: var(--text-dim); text-decoration:none; border-bottom:1px dashed var(--border); padding-bottom:2px; }
+  .project-links a:hover{ color: var(--accent); border-color: var(--accent); }
+
+  .shots{ display:flex; gap:16px; overflow-x:auto; padding: 6px 2px 14px; scrollbar-width: thin; }
+  .shots::-webkit-scrollbar{ height:6px; }
+  .shots::-webkit-scrollbar-thumb{ background: var(--border); border-radius:4px; }
+  .shot{ flex: 0 0 auto; width: 168px; }
+  .shot img{ width:100%; border-radius: 8px; border:1px solid var(--border-soft); }
+  .shot-caption{ font-family: var(--mono); font-size:10.5px; color: var(--text-faint); margin-top:8px; text-align:center; }
+
+  .framed{
+    width:100%; border-radius: 22px; border: 6px solid #1c2028; background:#000;
+    box-shadow: 0 20px 40px -20px rgba(0,0,0,0.7);
+  }
+
+  .placeholder-block{
+    font-family: var(--mono); font-size:12.5px; color: var(--text-faint);
+    border: 1px dashed var(--border); border-radius:8px; padding: 18px;
+    background: repeating-linear-gradient(135deg, transparent, transparent 8px, rgba(255,255,255,0.015) 8px, rgba(255,255,255,0.015) 16px);
+  }
+
+  /* ---------- skills ---------- */
+  .skills-block{
+    background: var(--surface); border:1px solid var(--border); border-radius: var(--radius);
+    padding: 26px 28px;
+  }
+  .skill-line{ font-family: var(--mono); font-size: clamp(12.5px, 2vw, 14.5px); line-height:2.1; }
+  .skill-line .kw{ color:#ff7a90; }
+  .skill-line .path{ color:#9ece6a; }
+  .skill-line .semi{ color: var(--text-faint); }
+  .skill-line .comment{ color: var(--text-faint); }
+
+  /* ---------- footer / contact ---------- */
+  .contact{ padding: 90px 0 60px; }
+  .terminal{
+    background: var(--surface); border:1px solid var(--border); border-radius: var(--radius);
+    padding: 26px 28px; font-family: var(--mono); font-size:14px;
+  }
+  .terminal .line{ margin-bottom:10px; color: var(--text-dim); }
+  .terminal .prompt{ color: var(--accent); }
+  .terminal .flag{ color: var(--accent-amber); }
+  .contact-links{ display:flex; flex-wrap:wrap; gap: 14px 28px; margin-top:18px; }
+  .contact-links a{ font-family: var(--mono); font-size:13.5px; text-decoration:none; color: var(--text); border-bottom:1px solid var(--border); padding-bottom:3px; }
+  .contact-links a:hover{ color: var(--accent); border-color: var(--accent); }
+  .foot-note{ margin-top: 34px; font-family: var(--mono); font-size:11.5px; color: var(--text-faint); }
+
+  .reveal{ opacity:0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+</style>
 </head>
-
 <body>
 
-<header>
-  <h1>Mahira Ahmad</h1>
-  <h3>Flutter Developer | Mobile Engineer</h3>
-  <p>Building scalable, high-performance mobile apps with clean architecture and real-world impact.</p>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">mahira<span class="dot">.</span>dart</a>
+    <ul class="nav-links">
+      <li><a href="#about"><span class="num">01</span> about</a></li>
+      <li><a href="#projects"><span class="num">02</span> projects</a></li>
+      <li><a href="#skills"><span class="num">03</span> skills</a></li>
+      <li><a href="#contact"><span class="num">04</span> contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero wrap" id="top">
+  <div class="eyebrow"><span class="bar"></span> BERLIN, DE &nbsp;/&nbsp; FLUTTER DEVELOPER</div>
+
+  <div class="editor">
+    <div class="editor-titlebar">
+      <span class="editor-dot r"></span><span class="editor-dot y"></span><span class="editor-dot g"></span>
+      <span class="editor-filename">mahira_ahmad.dart</span>
+    </div>
+    <div class="editor-body">
+      <div class="code-line"><span class="tok-kw">class</span> <span class="tok-cls">Mahira</span> <span class="tok-kw">extends</span> <span class="tok-cls">FlutterDeveloper</span> {
+  <span class="tok-kw">final</span> city <span class="tok-pl">=</span> <span class="tok-str">'Berlin, Germany'</span>;
+  <span class="tok-kw">final</span> experience <span class="tok-pl">=</span> <span class="tok-str">'4+ years, senior-level ownership'</span>;
+  <span class="tok-kw">final</span> builds <span class="tok-pl">=</span> <span class="tok-str">'apps from 0 to production, end to end'</span>;
+  <span class="tok-kw">final</span> aiFocus <span class="tok-pl">=</span> [<span class="tok-str">'LLM integration'</span>, <span class="tok-str">'agentic apps'</span>, <span class="tok-str">'on-device AI'</span>, <span class="tok-str">'workflow automation'</span>];
+  <span class="tok-kw">final</span> backend <span class="tok-pl">=</span> <span class="tok-str">'Python + FastAPI, basic'</span>;
+  <span class="tok-com">// M.Tech, Computer Vision &amp; Deep Learning</span>
+}<span class="caret"></span></div>
+    </div>
+  </div>
+
+  <p class="hero-sub">I build production Flutter apps end to end — architecture, state management, testing, and what actually ships to the App Store and Play Store — usually as the first or only mobile engineer on the team. 4+ years in, almost all of that ownership has come from startups, where there's no one else to hand the hard calls to. My focus now sits at the intersection of Flutter and AI: LLM integration, agentic app patterns, and on-device inference. I can write a basic FastAPI service in Python when a project needs a lightweight backend to go with the AI work — but Flutter is where the depth is, and where I want to keep building it.</p>
+
+  <div class="hero-cta">
+    <a class="btn btn-primary" href="#projects">→ view projects</a>
+    <a class="btn btn-ghost" href="mahira_cv.pdf" id="cv-link" download="mahira_cv.pdf">↓ download CV</a>
+    <a class="btn btn-ghost" href="https://github.com/mahira13" target="_blank" rel="noopener">github.com/mahira13</a>
+  </div>
+
+  <div class="statusbar">
+    <span>🌱 main</span>
+    <span>Flutter 3.x · Dart</span>
+    <span>UTF-8</span>
+    <span>open to full-time roles</span>
+  </div>
 </header>
-
-<div class="container">
-
-<section>
-  <h2>About Me</h2>
-  <p>
-    Flutter developer with 4+ years of experience building production-grade mobile apps.
-    I specialize in scalable architecture, real-time systems, and end-to-end product ownership.
-    I enjoy working across the stack and continuously improving developer workflows using modern tools and AI.
-  </p>
-</section>
-
-<section>
-  <h2>Technical Skills</h2>
-
-  <p><strong>Mobile:</strong> Flutter, Dart, Android, iOS</p>
-  <p><strong>Architecture:</strong> Clean Architecture, BLoC, Riverpod, GetX, Modular Design</p>
-  <p><strong>Backend & Cloud:</strong> Firebase, Supabase, AWS (Cognito, AppSync, S3, DynamoDB)</p>
-  <p><strong>APIs:</strong> REST, GraphQL (queries, mutations, subscriptions)</p>
-  <p><strong>DevOps:</strong> CI/CD (GitHub Actions), App Store & Play Store deployment</p>
-  <p><strong>Testing:</strong> Unit Testing, Widget Testing</p>
-  <p><strong>Tools:</strong> Git, GitHub, Figma</p>
-  <p><strong>AI Tools:</strong> GitHub Copilot, Claude (AI-assisted development & productivity)</p>
-
-</section>
-
-<section>
-  <h2>Experience Highlights</h2>
-
-  <div class="project">
-    <p>✔ Built and shipped multiple apps end-to-end (design → development → release)</p>
-    <p>✔ Implemented real-time systems (chat, notifications, GraphQL subscriptions)</p>
-    <p>✔ Improved performance and scalability across production apps</p>
-    <p>✔ Led code reviews and contributed to better engineering practices</p>
-    <p>✔ Worked as a consultant improving architecture and developer workflows</p>
-  </div>
-
-</section>
-
-<section>
-  <h2>Projects</h2>
-
-  <div class="project">
-    <h3>Bael Health Reminder</h3>
-    <div class="badges">
-      <span class="badge">Flutter</span>
-      <span class="badge">Firebase</span>
-      <span class="badge">REST API</span>
-    </div>
-    <p>Medicine management app with scheduling, reminders, and tracking.</p>
-    <p><strong>Links:</strong> 
-      <a href="https://play.google.com/store/apps/details?id=com.app.BaelHealthReminder" target="_blank">Google Play</a>
-    </p>
-    <div class="highlight">Sole developer; implemented background scheduling, notifications, and analytics.</div>
-  </div>
-
-  <div class="project">
-    <h3>The Bench – Dating Manager</h3>
-    <div class="badges">
-      <span class="badge">Flutter</span>
-      <span class="badge">GetX</span>
-      <span class="badge">AWS</span>
-      <span class="badge">GraphQL</span>
-    </div>
-    <p>Social platform with real-time updates, chat, and user interaction.</p>
-    <p><strong>Links:</strong> 
-      <a href="https://apps.apple.com/in/app/the-bench-dating-manager/id6444719595" target="_blank">App Store</a>
-    </p>
-    <div class="highlight">
-      Built from scratch; implemented authentication, push notifications, real-time chat, and dynamic links.
+<section class="section reveal" id="about">
+  <div class="wrap">
+    <div class="head"><span class="idx">01</span><h2>about</h2><span class="rule"></span></div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a Flutter developer based in Berlin with <strong>4+ years</strong> building and shipping production apps end to end — architecture, state management (<strong>BLoC, Riverpod, GetX</strong>), clean/SOLID structuring, and everything it takes to get an app through the App Store and Play Store. Almost all of that has been at startups, usually as the only mobile engineer, which means owning the decisions & wearing multiple hats at once. That's the core of what I do, and it's where I'm strongest.</p>
+        <p>My background is in <strong>computer vision and deep learning</strong> (M.Tech), and that's what keeps pulling me toward the intersection of Flutter and AI: <strong>LLM integration, agentic app patterns, on-device inference,</strong>. I also write basic <strong>Python and FastAPI</strong> services when a project needs a lightweight backend for that AI work; it's a real but secondary skill, not something I'd claim backend-engineer-level depth in.</p>
+        <p>A lot of my recent projects happen to be in <strong>health-tech and femtech</strong> — not by accident, but because the constraints (privacy, real-time data, offline-first design) are genuinely interesting to build for. I'm targeting Flutter / mobile engineer roles in the German tech market where that Flutter-plus-AI combination is useful.</p>
+      </div>
+      <div class="stat-list">
+        <div class="stat-row"><span class="k">location</span><span class="v">Berlin, Germany</span></div>
+        <div class="stat-row"><span class="k">experience</span><span class="v">4+ years, senior-level ownership</span></div>
+        <div class="stat-row"><span class="k">core_stack</span><span class="v">Flutter · Dart · Clean Architecture · BLoC/Riverpod/GetX</span></div>
+        <div class="stat-row"><span class="k">ai_focus</span><span class="v">LLM integration, agentic apps, on-device &amp; workflow atomation n8n</span></div>
+        <div class="stat-row"><span class="k">backend</span><span class="v">Firebase · Supabase · AWS · Python/FastAPI (basic)</span></div>
+        <div class="stat-row"><span class="k">education</span><span class="v">M.Tech, Software Engg with focus on Computer Vision &amp; DL</span></div>
+        <div class="stat-row"><span class="k">languages</span><span class="v">English, Hindi, Urdu, German (B1)</span></div>
+        <div class="stat-row"><span class="k">status</span><span class="v">open to full-time Flutter / Mobile Engineer roles</span></div>
+      </div>
     </div>
   </div>
+</section>
+<section class="section reveal" id="projects">
+  <div class="wrap">
+    <div class="head"><span class="idx">02</span><h2>projects</h2><span class="rule"></span></div>
 
-  <div class="project">
-    <h3>Phox Tracker</h3>
-    <div class="badges">
-      <span class="badge">Flutter</span>
-      <span class="badge">Firebase</span>
-      <span class="badge">REST API</span>
+    <!-- EKUTIR -->
+    <div class="project">
+      <div class="project-tab">
+        <span class="project-filename">ekutir_agritech.dart</span>
+        <span class="project-org">EKUTIR · concurrent consulting · 2025–2026</span>
+        <span class="project-tag tag-featured">featured</span>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Led architecture improvements across multiple farmer-facing Flutter apps — feature-based SOLID architecture, real-time land polygon mapping, and geospatial boundary capture for agricultural planning.</p>
+        <div class="stack-line"><span class="pkg">import</span> 'solid_architecture'; <span class="pkg">import</span> 'geospatial_maps'; <span class="pkg">import</span> 'weather_advisory';</div>
+        <div class="shots">
+          <div class="shot"><img class="framed" src="assets/ekutir/sign-in.png" alt="EKUTIR sign in screen with phone number OTP entry" loading="lazy"><div class="shot-caption">sign in</div></div>
+          <div class="shot"><img class="framed" src="assets/ekutir/polygon-map.png" alt="EKUTIR polygon capture map for mapping a farm boundary, showing 5.84 acres" loading="lazy"><div class="shot-caption">boundary capture</div></div>
+          <div class="shot"><img class="framed" src="assets/ekutir/weather-advisory.png" alt="EKUTIR home screen with weather data and today's advisory" loading="lazy"><div class="shot-caption">weather advisory</div></div>
+          <div class="shot"><img class="framed" src="assets/ekutir/land-details.png" alt="EKUTIR land details screen with coordinates and area auto-filled from the polygon map" loading="lazy"><div class="shot-caption">land details</div></div>
+        </div>
+      </div>
     </div>
-    <p>Prescription delivery and logistics tracking app.</p>
-    <p><strong>Links:</strong> 
-      <a href="https://apps.apple.com/in/app/phox-tracker/id1597703906" target="_blank">App Store</a>
-    </p>
-    <div class="highlight">
-      Improved app performance and handled low-network reliability scenarios.
+
+    <!-- AI Mental Health -->
+    <div class="project">
+      <div class="project-tab">
+        <span class="project-filename">mind_insights.dart</span>
+        <span class="project-org">Personal project · on-device AI · 2026</span>
+        <span class="project-tag tag-featured">featured</span>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">A daily symptom-journaling app that turns a week of entries into structured, on-device AI insights — parsed into cards like "Your Week in Words" and "What Helped on Better Days" — plus a 7-day multi-metric trend chart and a shareable PDF. Runs fully locally with flutter_gemma (Qwen3, LiteRT/int4 quantized): nothing leaves the device.</p>
+        <div class="stack-line"><span class="pkg">import</span> 'flutter_gemma'; <span class="pkg">import</span> 'qwen3'; <span class="pkg">import</span> 'on_device_inference'; <span class="pkg">import</span> 'fl_chart';</div>
+        <div class="shots">
+          <div class="shot"><img class="framed" src="assets/mind/home.png" alt="Mind Insights home screen with a 7-day overview and quick actions for Weekly Insights and 7-Day Chart" loading="lazy"><div class="shot-caption">home</div></div>
+          <div class="shot"><img class="framed" src="assets/mind/daily-journal.png" alt="Mind Insights daily journal screen with sliders for positive symptoms, negative symptoms, sleep and stress" loading="lazy"><div class="shot-caption">daily journal</div></div>
+          <div class="shot"><img class="framed" src="assets/mind/7-day-timeline.png" alt="Mind Insights 7-day timeline chart plotting positive, negative, sleep, stress and social metrics" loading="lazy"><div class="shot-caption">7-day timeline</div></div>
+          <div class="shot"><img class="framed" src="assets/mind/weekly-insights.png" alt="Mind Insights offline weekly insights screen with AI-generated summary cards" loading="lazy"><div class="shot-caption">weekly insights</div></div>
+          <div class="shot"><img class="framed" src="assets/mind/insights-pdf.png" alt="A weekly insights shareable pdf generated" loading="lazy"><div class="shot-caption">weekly insights shareable pdf</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Uplift Her -->
+    <div class="project">
+      <div class="project-tab">
+        <span class="project-filename">uplift_her.dart</span>
+        <span class="project-org">Uplift Her · Founding Engineer, part-time · 2025–present</span>
+        <span class="project-tag tag-progress">in progress</span>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">A women-focused social networking platform — secure authentication, real-time chat, and location-aware, interest-based matching. Contributing GDPR-conscious architecture: privacy-first data handling and consent-aware feature design.</p>
+        <div class="stack-line"><span class="pkg">import</span> 'riverpod'; <span class="pkg">import</span> 'supabase'; <span class="pkg">import</span> 'gdpr_conscious_architecture';</div>
+        <div class="placeholder-block">// screens coming soon — this one's still shipping.</div>
+      </div>
+    </div>
+
+    <!-- Phox Tracker -->
+    <div class="project">
+      <div class="project-tab">
+        <span class="project-filename">phox_tracker.dart</span>
+        <span class="project-org">Neetable · 2022–2023</span>
+        <span class="project-tag tag-archive">live</span>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">An on-demand medical courier delivery app for health systems — live GPS tracking, route optimization, and fleet assignment. Supported early development, then led the Flutter 3.0 migration and offline-first order handling.</p>
+        <div class="stack-line"><span class="pkg">import</span> 'flutter 3.0'; <span class="pkg">import</span> 'local_storage'; <span class="pkg">import</span> 'live_gps_tracking';</div>
+        <div class="placeholder-block">// still live on the Play Store — screenshots there, not hotlinked here (Google's CDN blocks some external referrers).</div>
+        <div class="project-links"><a href="https://play.google.com/store/apps/details?id=com.phoxhealth.driver&hl=en" target="_blank" rel="noopener">→ view on Google Play</a></div>
+      </div>
+    </div>
+
+    <!-- The Bench -->
+    <div class="project">
+      <div class="project-tab">
+        <span class="project-filename">the_bench.dart</span>
+        <span class="project-org">Neetable · 2022–2023</span>
+        <span class="project-tag tag-featured">featured</span>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">A social dating-manager app built from scratch — real-time chat with GraphQL subscriptions, like/share/comment, push notifications, and dynamic invite links.</p>
+        <div class="stack-line"><span class="pkg">import</span> 'get_x'; <span class="pkg">import</span> 'amazon_cognito'; <span class="pkg">import</span> 'dynamo_db'; <span class="pkg">import</span> 'amplify_graphql';</div>
+        <div class="shots">
+          <div class="shot"><img src="assets/bench/activity-feed.jpg" alt="The Bench activity feed showing a post with likes, comments, and share actions" loading="lazy"><div class="shot-caption">activity feed</div></div>
+          <div class="shot"><img src="assets/bench/roster.jpg" alt="The Bench roster screen listing active connections ranked #1 to #4" loading="lazy"><div class="shot-caption">roster</div></div>
+          <div class="shot"><img src="assets/bench/profile.jpg" alt="The Bench user profile screen with About, Inner Circle, and Shared with you tabs" loading="lazy"><div class="shot-caption">profile</div></div>
+          <div class="shot"><img src="assets/bench/invite.jpg" alt="The Bench invite friends screen with a shareable link" loading="lazy"><div class="shot-caption">invite flow</div></div>
+          <div class="shot"><img src="assets/bench/create-player.png" alt="The Bench create player form with photo upload and rank fields" loading="lazy"><div class="shot-caption">create player</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bael Health -->
+    <div class="project">
+      <div class="project-tab">
+        <span class="project-filename">bael_health.dart</span>
+        <span class="project-org">Tecraki Technology Solutions · 2024–2025</span>
+        <span class="project-tag tag-archive">archive</span>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Led end-to-end development of a medicine reminder and management app — clean architecture, BLoC, and advanced background notification scheduling with WorkManager for reliable reminders. Shipped to both the App Store and Play Store.</p>
+        <div class="stack-line"><span class="pkg">import</span> 'clean_architecture'; <span class="pkg">import</span> 'bloc'; <span class="pkg">import</span> 'work_manager';</div>
+        <div class="placeholder-block">// the original store listing is no longer live, so no screenshots here.<br>// case study available on request.</div>
+      </div>
+    </div>
+
+    <!-- CallDoc -->
+    <div class="project">
+      <div class="project-tab">
+        <span class="project-filename">call_doc.dart</span>
+        <span class="project-org">Canny Alley Tech · 2020–2022</span>
+        <span class="project-tag tag-archive">archive</span>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">Migrated an existing teleconsultation app to Flutter, including one-to-one video calling and a Firebase Cloud Functions backend built from scratch.</p>
+        <div class="stack-line"><span class="pkg">import</span> 'package:flutter/material.dart'; <span class="pkg">import</span> 'agora_rtc_engine'; <span class="pkg">import</span> 'firebase_cloud_functions';</div>
+        <div class="placeholder-block">// no screenshots available — this predates my screenshot archive.<br>// happy to walk through the architecture in conversation.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<section class="section reveal" id="skills">
+
+  <div class="wrap">
+    <div class="head"><span class="idx">03</span><h2>skills</h2><span class="rule"></span></div>
+    <div class="skills-block">
+      <div class="skill-line"><span class="kw">import</span> <span class="path">'flutter_core.dart'</span><span class="semi">;</span> <span class="comment">// Flutter, Dart, Clean Architecture, SOLID, feature-based modularization</span></div>
+      <div class="skill-line"><span class="kw">import</span> <span class="path">'state_management.dart'</span><span class="semi">;</span> <span class="comment">// BLoC, Cubit, Riverpod, GetX</span></div>
+      <div class="skill-line"><span class="kw">import</span> <span class="path">'ai_and_flutter.dart'</span><span class="semi">;</span> <span class="comment">// LLM integration, agentic apps, on-device AI (flutter_gemma), workflow automation n8n</span></div>
+      <div class="skill-line"><span class="kw">import</span> <span class="path">'backend_and_cloud.dart'</span><span class="semi">;</span> <span class="comment">// Firebase, Supabase, AWS, GCP, REST, GraphQL, DynamoDB, Cognito, S3; Python + FastAPI (basic)</span></div>
+      <div class="skill-line"><span class="kw">import</span> <span class="path">'testing.dart'</span><span class="semi">;</span> <span class="comment">// Unit, Widget, Integration, Mocktail</span></div>
+      <div class="skill-line"><span class="kw">import</span> <span class="path">'tooling.dart'</span><span class="semi">;</span> <span class="comment">// Git, CI/CD (GitHub Actions), Jira, Figma, Copilot, Claude</span></div>
+      <div class="skill-line"><span class="kw">import</span> <span class="path">'background.dart'</span><span class="semi">;</span> <span class="comment">// M.Tech, Computer Vision &amp; Deep Learning</span></div>
     </div>
   </div>
-
 </section>
 
-<section>
-  <h2>Contact</h2>
-  <p>Email: <a href="mailto:mahiraamu@gmail.com">mahiraamu@gmail.com</a></p>
-  <p>
-    <a href="https://linkedin.com/in/mahira-ahmad-869953133" target="_blank">LinkedIn</a> |
-    <a href="https://github.com/mahira13" target="_blank">GitHub</a>
-  </p>
-    <a class="btn" href="CV.pdf" download>Download CV</a>
+<section class="section contact reveal" id="contact">
+  <div class="wrap">
+    <div class="head"><span class="idx">04</span><h2>contact</h2><span class="rule"></span></div>
+    <div class="terminal">
+      <div class="line"><span class="prompt">mahira@berlin</span>:~$ contact <span class="flag">--status</span> open-to-work</div>
+      <div class="line">Based in Berlin · open to full-time Flutter / Mobile Engineer roles, ideally with some Flutter × AI overlap.</div>
+    </div>
+    <div class="contact-links">
+      <a href="mailto:mahiraamu@gmail.com">mahiraamu@gmail.com</a>
+      <a href="https://linkedin.com/in/mahira-ahmad-869953133" target="_blank" rel="noopener">linkedin.com/in/mahira-ahmad</a>
+      <a href="https://github.com/mahira13" target="_blank" rel="noopener">github.com/mahira13</a>
+    </div>
+    <div class="foot-note">// built with Flutter energy, shipped as plain HTML. © Mahira Ahmad.</div>
+  </div>
 </section>
 
-</div>
+<script>
+  document.getElementById('cv-link').addEventListener('click', function(e){
+    // Update this href to point at your hosted CV PDF once it's in the repo.
+  });
 
-<footer>
-  © 2026 Mahira Ahmad | Built with passion 🚀
-</footer>
-
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el=> io.observe(el));
+</script>
 </body>
 </html>
